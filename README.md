@@ -77,7 +77,7 @@ Designed with a modern glassmorphism dashboard, responsive layouts, dark mode su
 
 ---
 
-# 📸 Screenshots
+# Screenshots
 
 ## Main Dashboard (Light Mode)
 
