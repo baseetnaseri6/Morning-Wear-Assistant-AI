@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Morning Wear Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
+            <div>
+                <h2>Morning Wear</h2>
+                <span>Assistant</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a class="active" onclick="scrollToDashboard()">
+                <i class="fa-solid fa-table-cells-large"></i> Dashboard
+            </a>
+
+            <a onclick="openClosetModal()">
+                <i class="fa-solid fa-shirt"></i> My Closet
+            </a>
+
+            <a onclick="openGeneratorModal()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Outfit Generator
+            </a>
+
+            <a onclick="openAllFavoritesModal()">
+                <i class="fa-regular fa-heart"></i> Favorites
+            </a>
+
+            <a onclick="showToast('Settings will be added in the next step', 'info')">
+                <i class="fa-solid fa-gear"></i> Settings
+            </a>
+        </nav>
+
+        <div class="closet-promo">
+            <div class="promo-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
+            <h4>Build your digital closet</h4>
+            <p>Add your clothes with real photos and get AI outfit suggestions.</p>
+            <button data-bs-toggle="modal" data-bs-target="#addItemModal">
+                <i class="fa-solid fa-plus"></i> Add Clothes
+            </button>
+        </div>
+
+        <div class="user-box">
+            <div class="avatar">MBN</div>
+            <div>
+                <strong>Hello, MBN</strong>
+                <p>Mohammad Baseet Naseri</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main" id="dashboardArea">
+
+        <header class="topbar">
+            <div>
+                <h1>Good morning, Mohammad Baseet Naseri!</h1>
+                <p>Let's find the perfect outfit for your day</p>
+            </div>
+
+            <div class="top-actions">
+                <div class="location-pill">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input id="cityInput" value="Vechta">
+                    <input id="countryInput" value="DE">
+                </div>
+
+                <button class="top-btn" onclick="showToast('Google Calendar will be connected next', 'info')">
+                    <i class="fa-regular fa-calendar"></i>
+                    Sync Calendar
+                </button>
+
+                <button id="themeToggle" class="theme-btn">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <section class="grid-top">
+
+            <div class="glass-card weather-card">
+                <div class="card-title">
+                    <div class="icon-box blue">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                    </div>
+                    <div>
+                        <h3>Weather Today</h3>
+                        <p>Vechta, Germany</p>
+                    </div>
+                </div>
+
+                <div id="weatherBox" class="weather-content">
+                    <h2>--°C</h2>
+                    <p>Loading weather...</p>
+
+                    <div class="weather-stats">
+                        <span>Feels like<br><b>--°C</b></span>
+                        <span>Humidity<br><b>--%</b></span>
+                        <span>Wind<br><b>--</b></span>
+                        <span>Rain<br><b>--%</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="card-title">
+                    <div class="icon-box purple">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <div>
+                        <h3>Today's Events</h3>
+                        <p>Schedule preview</p>
+                    </div>
+                </div>
+
+                <div id="calendarBox" class="events-list">
+                    <div class="event-item">
+                        <b>09:00</b>
+                        <span>
+                            Work meeting
+                            <small><i class="fa-solid fa-building"></i> meeting</small>
+                        </span>
+                    </div>
+
+                    <div class="event-item">
+                        <b>18:00</b>
+                        <span>
+                            Gym
+                            <small><i class="fa-solid fa-dumbbell"></i> gym</small>
+                        </span>
+                    </div>
+                </div>
+
+                <button class="link-btn" onclick="showToast('Event add feature will be added later', 'info')">
+                    <i class="fa-solid fa-plus"></i> Add Event
+                </button>
+            </div>
+
+            <div class="glass-card quick-card">
+                <div class="card-title">
+                    <div class="icon-box violet">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div>
+                        <h3>Outfit Quick Generate</h3>
+                        <p>Get AI recommendation in one click</p>
+                    </div>
+                </div>
+
+                <button onclick="getRecommendation()" class="generate-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Generate Outfit
+                </button>
+
+                <p class="small-text">Based on weather, events & your closet photos</p>
+            </div>
+
+        </section>
+
+        <section class="recommendation-pro">
+            <div class="recommendation-header">
+                <div class="header-left">
+                    <div class="ai-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h3>AI Outfit Recommendation</h3>
+                        <p>Real closet photos + smart outfit reasons</p>
+                    </div>
+                </div>
+
+                <div class="match-badge">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Smart Match
+                </div>
+            </div>
+
+            <div class="recommendation-layout">
+
+                <div class="outfit-visual-card">
+                    <div class="outfit-visual-header">
+                        <span>Real Closet Outfit Preview</span>
+                        <i class="fa-solid fa-images"></i>
+                    </div>
+
+                    <div id="outfitImagePreview" class="outfit-image-preview">
+                        <div class="real-image-empty">
+                            <div class="empty-image-icon">
+                                <i class="fa-solid fa-images"></i>
+                            </div>
+                            <strong>Your outfit photos will appear here</strong>
+                            <p>Add clothing images to your closet, then generate an outfit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-content">
+                    <h4>Today’s Best Outfit</h4>
+
+                    <div id="recommendationBox" class="ai-result-text">
+                        Add clothes with images, then click Generate Outfit.
+                    </div>
+
+                    <div class="rating-cards">
+                        <div>
+                            <i class="fa-solid fa-shield-heart"></i>
+                            <span>Comfort</span>
+                            <strong>--/10</strong>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-user-check"></i>
+                            <span>Style</span>
+                            <strong>--/10</strong>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-cloud-sun"></i>
+                            <span>Weather</span>
+                            <strong>--/10</strong>
+                        </div>
+                    </div>
+
+                    <div class="action-row">
+                        <button onclick="saveFavorite()" class="pro-btn outline">
+                            <i class="fa-regular fa-heart"></i>
+                            Save Outfit
+                        </button>
+
+                        <button onclick="getRecommendation()" class="pro-btn primary">
+                            <i class="fa-solid fa-rotate"></i>
+                            Regenerate
+                        </button>
+                    </div>
+                </div>
+
+                <div class="why-panel">
+                    <h5>Why this outfit?</h5>
+
+                    <div class="why-item">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Reasons will appear after AI generates the outfit.</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bottom-grid">
+
+            <div class="glass-card closet-section">
+                <div class="section-head">
+                    <div>
+                        <h3><i class="fa-solid fa-shirt"></i> My Closet</h3>
+                        <p id="closetCount">0 items</p>
+                    </div>
+
+                    <button data-bs-toggle="modal" data-bs-target="#addItemModal">
+                        <i class="fa-solid fa-plus"></i> Add Item
+                    </button>
+                </div>
+
+                <div class="tabs">
+                    <span class="active">All</span>
+                    <span>Tops</span>
+                    <span>Bottoms</span>
+                    <span>Shoes</span>
+                    <span>Outerwear</span>
+                    <span>Accessories</span>
+                </div>
+
+                <div id="closetBox" class="closet-grid"></div>
+            </div>
+
+            <div class="glass-card favorites-section">
+                <div class="section-head">
+                    <div>
+                        <h3><i class="fa-regular fa-heart"></i> Favorite Outfits</h3>
+                        <p>Saved outfits</p>
+                    </div>
+
+                    <button onclick="openAllFavoritesModal()" class="view-btn">
+                        View All
+                    </button>
+                </div>
+
+                <div id="favoritesBox" class="favorite-list"></div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<!-- ADD ITEM MODAL -->
+<div class="modal fade premium-modal" id="addItemModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content premium-modal-content">
+
+            <div class="premium-modal-header">
+                <div class="premium-title-wrap">
+                    <div class="premium-title-icon purple">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div>
+                        <h5>Add New Clothing Item</h5>
+                        <p>Add details and a real photo of your clothing item.</p>
+                    </div>
+                </div>
+
+                <button class="premium-close" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="premium-modal-body">
+                <div class="premium-form-section">
+                    <div class="section-label">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Basic Information
+                    </div>
+
+                    <div class="premium-form-grid three">
+                        <div class="premium-field">
+                            <label>Item Name</label>
+                            <input id="itemName" class="form-control" placeholder="e.g. Gray Sweater">
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Category</label>
+                            <select id="itemCategory" class="form-select">
+                                <option value="top">Top</option>
+                                <option value="bottom">Bottom</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="accessory">Accessory</option>
+                                <option value="outerwear">Outerwear</option>
+                            </select>
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Color</label>
+                            <input id="itemColor" class="form-control" placeholder="Gray, Blue, Black">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-form-section">
+                    <div class="section-label">
+                        <i class="fa-solid fa-sliders"></i>
+                        Item Details
+                    </div>
+
+                    <div class="premium-form-grid three">
+                        <div class="premium-field">
+                            <label>Warmth Level</label>
+                            <input id="warmthLevel" type="number" min="1" max="5" value="2" class="form-control">
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Formal Level</label>
+                            <input id="formalLevel" type="number" min="1" max="5" value="1" class="form-control">
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Waterproof</label>
+                            <select id="waterproof" class="form-select">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-form-section">
+                    <div class="section-label">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Additional Information
+                    </div>
+
+                    <div class="premium-form-grid three">
+                        <div class="premium-field">
+                            <label>Season</label>
+                            <select id="itemSeason" class="form-select">
+                                <option value="">Any season</option>
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="autumn">Autumn</option>
+                                <option value="winter">Winter</option>
+                            </select>
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Occasion</label>
+                            <select id="itemOccasion" class="form-select">
+                                <option value="">Any occasion</option>
+                                <option value="casual">Casual</option>
+                                <option value="work">Work</option>
+                                <option value="meeting">Meeting</option>
+                                <option value="gym">Gym</option>
+                                <option value="formal">Formal</option>
+                            </select>
+                        </div>
+
+                        <div class="premium-field">
+                            <label>Clothing Image</label>
+                            <input id="itemImage" type="file" class="form-control" accept="image/*">
+                        </div>
+
+                        <div class="premium-field span-3">
+                            <label>Notes</label>
+                            <textarea id="itemNotes" class="form-control" placeholder="Extra notes..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="premium-modal-footer">
+                <button class="premium-secondary-btn" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+                <button onclick="addClothingItem()" class="premium-primary-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Item to Closet
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- MY CLOSET MODAL -->
+<div class="modal fade premium-modal" id="closetModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content premium-modal-content">
+
+            <div class="premium-modal-header">
+                <div class="premium-title-wrap">
+                    <div class="premium-title-icon blue">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div>
+                        <h5>My Closet</h5>
+                        <p>Manage your clothing items and real photos.</p>
+                    </div>
+                </div>
+
+                <button class="premium-close" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="premium-toolbar">
+                <div class="premium-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="closetSearchInput" oninput="filterClosetModal()" placeholder="Search items...">
+                </div>
+
+                <button class="premium-filter-btn" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Item
+                </button>
+            </div>
+
+            <div class="premium-modal-body">
+                <div id="closetModalBox" class="premium-closet-grid"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- OUTFIT GENERATOR MODAL -->
+<div class="modal fade premium-modal" id="generatorModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content premium-modal-content">
+
+            <div class="premium-modal-header">
+                <div class="premium-title-wrap">
+                    <div class="premium-title-icon purple">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h5>AI Outfit Generator</h5>
+                        <p>Let AI create the perfect outfit from your closet photos.</p>
+                    </div>
+                </div>
+
+                <button class="premium-close" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="premium-modal-body">
+                <div class="generator-premium-layout">
+                    <div class="generator-sidebar">
+                        <div><i class="fa-solid fa-cloud-sun"></i> Weather</div>
+                        <div><i class="fa-regular fa-calendar"></i> Events</div>
+                        <div><i class="fa-solid fa-images"></i> Closet Photos</div>
+                        <div><i class="fa-solid fa-sliders"></i> Preferences</div>
+                    </div>
+
+                    <div class="generator-preview-card">
+                        <h4>Generate New Outfit</h4>
+                        <p>AI will use your real closet photos, weather and schedule.</p>
+
+                        <div class="mini-outfit-line">
+                            <span><i class="fa-solid fa-shirt"></i></span>
+                            <b></b>
+                            <span><i class="fa-solid fa-user-tie"></i></span>
+                            <b></b>
+                            <span><i class="fa-solid fa-shoe-prints"></i></span>
+                            <b></b>
+                            <span><i class="fa-solid fa-umbrella"></i></span>
+                        </div>
+
+                        <button onclick="generateFromModal()" class="premium-primary-btn wide">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            Generate Outfit Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ALL FAVORITES MODAL -->
+<div class="modal fade premium-modal" id="allFavoritesModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-xl-down modal-xl">
+        <div class="modal-content premium-modal-content favorites-premium">
+
+            <div class="premium-modal-header">
+                <div class="premium-title-wrap">
+                    <div class="premium-title-icon heart">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div>
+                        <h5>All Favorite Outfits</h5>
+                        <p>Review, reuse and manage your saved outfit combinations.</p>
+                    </div>
+                </div>
+
+                <div class="favorite-header-actions">
+                    <div class="premium-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input id="favoriteSearchInput" oninput="filterFavoriteCards()" placeholder="Search outfits...">
+                    </div>
+
+                    <button class="premium-close" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="favorite-filter-row">
+                <button class="active" onclick="filterFavoriteType('all')">All</button>
+                <button onclick="filterFavoriteType('work')">Work</button>
+                <button onclick="filterFavoriteType('casual')">Casual</button>
+                <button onclick="filterFavoriteType('gym')">Gym</button>
+                <button onclick="filterFavoriteType('winter')">Winter</button>
+                <button onclick="filterFavoriteType('summer')">Summer</button>
+            </div>
+
+            <div class="premium-modal-body">
+                <div id="allFavoritesBox" class="premium-favorites-grid"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="toastBox"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/app.js"></script>
+
+</body>
+</html>
