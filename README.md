@@ -1,127 +1,117 @@
-Morning-Wear-Assistant-AI
+# Morning-Wear-Assistant-AI
 
-Morning-Wear-Assistant-AI is a modern AI-powered wardrobe assistant that helps users decide what to wear every day.
+### AI-Powered Smart Outfit Recommendation Platform
 
-The platform intelligently combines:
+A modern AI-powered outfit recommendation system that helps users decide what to wear based on real-time weather conditions, daily schedule, and their personal digital wardrobe.
 
-* Real-Time Weather Data
-* Daily Calendar Events
-* Personal Digital Closet
-* Google Gemini AI
+---
 
-to generate smart, personalized outfit recommendations.
+##  Overview
 
-Built with a modern Glassmorphism UI, responsive layouts, interactive dashboards, and a premium SaaS-like user experience.
+Morning Wear Assistant AI combines weather intelligence, event awareness and wardrobe management into one smart platform.
 
-⸻
+The application analyzes:
 
-Features
+- Current weather conditions
+- Daily events and activities
+- User clothing inventory
+- Clothing attributes
 
-Real-Time Weather Integration
+and generates personalized outfit recommendations using Artificial Intelligence.
+
+Designed with a modern glassmorphism dashboard, responsive layouts, dark mode support and an intuitive user experience.
+
+---
+
+##  Core Features
+
+###  Real-Time Weather Integration
 
 * Current Temperature
 * Feels-Like Temperature
 * Humidity Monitoring
 * Wind Speed Analysis
 * Rain Probability Detection
-* Location-Based Forecast
+* Location-Based Weather Forecast
 * Open Meteo API Integration
 
-⸻
-
-AI Outfit Recommendations
+###  AI Outfit Recommendation Engine
 
 * Powered by Google Gemini AI
 * Smart Outfit Generation
 * Weather-Aware Recommendations
-* Event-Aware Suggestions
-* Personalized Clothing Selection
+* Event-Aware Recommendations
+* Personalized Clothing Suggestions
 * Outfit Scoring System
-* Practical Fashion Advice
-* AI-Powered Decision Making
+* Practical Styling Advice
 
-⸻
-
-Digital Closet Management
+###  Digital Closet Management
 
 * Add Clothing Items
-* Organize Personal Wardrobe
-* Category Management
-* Color Tracking
+* Digital Wardrobe Organization
+* Color Management
 * Warmth Level Tracking
 * Formality Level Tracking
 * Waterproof Item Tracking
-* Season Organization
-* Occasion Organization
+* Seasonal Organization
+* Occasion-Based Organization
 
-⸻
-
-Favorite Outfit System
+### Favorite Outfit System
 
 * Save Favorite Outfits
 * Reuse Previous Recommendations
 * Manage Saved Combinations
 * Quick Outfit Access
+* Favorite Outfit Library
 
-⸻
+### Premium User Experience
 
-Modern User Experience
-
-* Premium Glassmorphism Design
+* Glassmorphism Dashboard
+* Modern SaaS Design
 * Responsive Layout
-* Interactive Dashboard
-* Modern Animations
 * Dark Mode
 * Light Mode
+* Interactive Components
 * Mobile Friendly
-* Smooth User Experience
+* Smooth Animations
 
-⸻
+---
 
-Screenshots
+# 📸 Screenshots
 
-Main Dashboard (Light Mode)
+## Main Dashboard (Light Mode)
 
-<p align="center">
-<img src="./screenshots/Main-light.png" width="100%">
-</p>
+![Main Light](screenshots/Main-light.png)
 
-⸻
+---
 
-Main Dashboard (Dark Mode)
+## Main Dashboard (Dark Mode)
 
-<p align="center">
-<img src="./screenshots/Main-dark.png" width="100%">
-</p>
+![Main Dark](screenshots/Main-dark.png)
 
-⸻
+---
 
-AI Outfit Recommendation
+## AI Outfit Recommendation
 
-<p align="center">
-<img src="./screenshots/AI-generate.png" width="100%">
-</p>
+![AI Generate](screenshots/AI-generate.png)
 
-⸻
+---
 
-Favorite Outfits
+## Favorite Outfits
 
-<p align="center">
-<img src="./screenshots/AI-favorite.png" width="100%">
-</p>
+![AI Favorite](screenshots/AI-favorite.png)
 
-⸻
+---
 
-Add Clothing Items
+## Add Clothing Items
 
-<p align="center">
-<img src="./screenshots/Add-outfits.png" width="100%">
-</p>
+![Add Outfits](screenshots/Add-outfits.png)
 
-⸻
+---
 
-Project Structure
+# Project Structure
 
+```text
 Morning-Wear-Assistant-AI
 │
 ├── app.py
@@ -140,89 +130,123 @@ Morning-Wear-Assistant-AI
 │   ├── app.js
 │   └── uploads/
 │
-└── screenshots/
-    ├── Main-light.png
-    ├── Main-dark.png
-    ├── AI-generate.png
-    ├── AI-favorite.png
-    └── Add-outfits.png
+├── screenshots/
+│   ├── Main-light.png
+│   ├── Main-dark.png
+│   ├── AI-generate.png
+│   ├── AI-favorite.png
+│   └── Add-outfits.png
+│
+└── wardrobe.db
+```
 
-⸻
+---
 
-Getting Started
+#  Technologies Used
 
-Clone Repository
+## Backend
 
-git clone https://github.com/basitnaseri8/Morning-Wear-Assistant-AI.git
+* Python
+* Flask
+* SQLite
+* Google Gemini AI
+* Open Meteo API
+* Flask-CORS
+* Python Dotenv
 
-⸻
+## Frontend
 
-Navigate to Project
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* Bootstrap 5
+* Tailwind CSS
+* Font Awesome
 
+---
+
+#  Installation Guide
+
+## Clone Repository
+
+```bash
+git clone https://github.com/baseetnaseri6/Morning-Wear-Assistant-AI.git
+```
+
+## Open Project
+
+```bash
 cd Morning-Wear-Assistant-AI
+```
 
-⸻
+## Create Virtual Environment
 
-Create Virtual Environment
+### macOS / Linux
 
-macOS / Linux
-
+```bash
 python3 -m venv .venv
-
-Activate Environment:
-
 source .venv/bin/activate
+```
 
-Windows
+### Windows
 
+```bash
 python -m venv .venv
-
-Activate Environment:
-
 .venv\Scripts\activate
+```
 
-⸻
+---
 
-Install Dependencies
+## Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-⸻
+---
 
-Configure Environment Variables
+## Create Environment File
 
-Create a file named:
+Create:
 
+```text
 .env
+```
 
 Add:
 
+```env
 FLASK_SECRET_KEY=your-secret-key
 GEMINI_API_KEY=your-gemini-api-key
 DEFAULT_CITY=Vechta
 DEFAULT_COUNTRY=DE
+```
 
-⸻
+---
 
-Run Application
+## Run Application
 
+```bash
 python app.py
+```
 
-Open Browser:
+Open:
 
+```text
 http://127.0.0.1:5000
+```
 
-⸻
+---
 
-How It Works
+# How It Works
 
-Step 1
+### Step 1
 
-User adds clothing items into the digital wardrobe.
+User adds clothing items to the digital wardrobe.
 
-Step 2
+### Step 2
 
-The application retrieves:
+The system retrieves:
 
 * Current Weather
 * Temperature
@@ -230,20 +254,20 @@ The application retrieves:
 * Rain Probability
 * Wind Speed
 
-Step 3
+### Step 3
 
-Calendar events are loaded.
+Daily events are loaded.
 
-Step 4
+### Step 4
 
 Google Gemini AI analyzes:
 
 * Weather Conditions
-* Daily Events
-* Closet Items
+* Daily Schedule
+* Closet Inventory
 * Clothing Attributes
 
-Step 5
+### Step 5
 
 AI generates:
 
@@ -253,204 +277,145 @@ AI generates:
 * Weather Score
 * Practical Advice
 
-Step 6
+### Step 6
 
-Users can save outfits into Favorites for future use.
+User can save recommendations into Favorites.
 
-⸻
+---
 
-Supported Clothing Categories
+#  Supported Clothing Categories
 
-Tops
-
-Examples:
+### Tops
 
 * T-Shirts
 * Shirts
 * Sweaters
 * Hoodies
 
-⸻
-
-Bottoms
-
-Examples:
+### Bottoms
 
 * Jeans
 * Trousers
 * Chinos
 * Shorts
 
-⸻
-
-Shoes
-
-Examples:
+### Shoes
 
 * Sneakers
 * Boots
 * Running Shoes
 
-⸻
-
-Outerwear
-
-Examples:
+### Outerwear
 
 * Jackets
 * Winter Coats
 * Rain Coats
 
-⸻
-
-Accessories
-
-Examples:
+### Accessories
 
 * Umbrellas
 * Watches
 * Scarves
 * Gloves
 
-⸻
+---
 
-APIs Used
+#  Security
 
-Google Gemini AI
+The following files should never be uploaded to GitHub:
 
-Used For:
+```text
+.env
+venv/
+.venv/
+__pycache__/
+*.db
+*.sqlite3
+```
+
+Protected using:
+
+```text
+.gitignore
+```
+
+---
+
+# APIs Used
+
+## Google Gemini AI
+
+Used for:
 
 * Outfit Recommendation
 * Smart Clothing Analysis
 * Personalized Suggestions
-* Fashion Reasoning
 
-⸻
+## Open Meteo API
 
-Open Meteo API
-
-Used For:
+Used for:
 
 * Weather Forecast
-* Temperature
-* Humidity
-* Rain Probability
-* Wind Speed
+* Temperature Data
+* Humidity Data
+* Rain Prediction
+* Wind Speed Data
 
-⸻
+---
 
-Security
-
-The following files should NEVER be pushed to GitHub:
-
-.env
-.venv/
-venv/
-__pycache__/
-*.db
-*.sqlite3
-
-These files are already excluded using:
-
-.gitignore
-
-⸻
-
-Requirements
-
-Main Dependencies:
-
-Flask
-flask-cors
-python-dotenv
-requests
-google-generativeai
-Werkzeug
-
-Install all requirements:
-
-pip install -r requirements.txt
-
-⸻
-
-Responsive Design
-
-Fully optimized for:
-
-* Desktop
-* Laptop
-* Tablet
-* Mobile Devices
-
-⸻
-
-Future Roadmap
+# Future Roadmap
 
 * Google Calendar Integration
-* Multi User Support
 * User Authentication
+* Multi User Support
 * Outfit History
 * AI Style Learning
 * Outfit Analytics
 * Seasonal Reports
 * Mobile Application
 * Cloud Deployment
-* Real AI Outfit Image Generation
-* AI Fashion Trends
-* Smart Wardrobe Insights
+* Real Outfit Image Generation
 
-⸻
+---
 
-Skills Demonstrated
+#  Skills Demonstrated
 
 * Python Development
 * Flask Development
 * REST API Development
 * Frontend Development
 * Responsive Web Design
-* UI/UX Engineering
 * Database Design
 * AI Integration
-* SaaS Dashboard Design
-* Glassmorphism Interface Design
+* Prompt Engineering
 * Weather API Integration
-* Full Stack Development
+* UI/UX Engineering
 
-⸻
+---
 
-Author
+#  Author
 
-Mohammad Baseet Naseri
+## Mohammad Baseet Naseri
 
-AI Engineer • Full Stack Developer • Network Engineer
+**AI Engineer • Full-Stack Developer • Network Engineer**
 
-Portfolio
-
+Portfolio  
 https://naseriai.com
 
-GitHub
-
-https://github.com/basitnaseri8
-
-LinkedIn
-
+LinkedIn  
 https://linkedin.com/in/baseetnaseri6
 
-⸻
+GitHub  
+https://github.com/baseetnaseri6
 
-Support
+---
 
-If you found this project useful:
+# Support
 
-⭐ Star this repository
+If you like this project, please consider giving it a star ⭐ on GitHub.
 
-🍴 Fork the project
+---
 
-Contribute and improve it
-
-⸻
-
-License
+# License
 
 MIT License ©️ 2026 Mohammad Baseet Naseri
-
