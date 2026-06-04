@@ -391,7 +391,7 @@ Used for:
 
 ## Mohammad Baseet Naseri
 
-**AI Engineer • Full-Stack Developer • Network Engineer**
+**AI Engineer**
 
 Portfolio  
 https://naseriai.com
