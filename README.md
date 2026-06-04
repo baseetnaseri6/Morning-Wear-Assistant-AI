@@ -91,12 +91,6 @@ Designed with a modern glassmorphism dashboard, responsive layouts, dark mode su
 
 ---
 
-## AI Outfit Recommendation
-
-![AI Generate](screenshots/AI-generate.png)
-
----
-
 ## Favorite Outfits
 
 ![AI Favorite](screenshots/AI-favorite.png)
